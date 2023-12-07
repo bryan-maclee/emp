@@ -1,3 +1,4 @@
+
 var masterTimer = 0;
 
 function biz (name, revenue, renewTime, purchaseCost) {
@@ -36,3 +37,16 @@ businesses.forEach(business => {
     masterTimer++;
     setTimeout(main, 10);
 }
+process.env.YOO = "you"
+// let D = new URL("index.html");
+
+const server = Bun.serve({
+  port: 3000,
+  fetch(req) {
+    return new Response(D);
+  },
+});
+console.log(`Listening on http://localhost:${server.port} ...`);
+console.log(process.env.YOU, process.env.FOO);
+
+console.log("got that shit done homie")

@@ -1,0 +1,15 @@
+{
+  "name": "emp",
+  "module": "index.html",
+  "type": "module",
+  "main": "index.html",
+  "scripts": {
+    "start": "bun run app.js"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
