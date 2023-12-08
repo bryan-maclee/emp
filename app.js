@@ -40,13 +40,24 @@ businesses.forEach(business => {
 process.env.YOO = "you"
 // let D = new URL("index.html");
 
-const server = Bun.serve({
-  port: 3000,
+Bun.serve({
   fetch(req) {
-    return new Response(D);
-  },
+   const url = new URL(req.url);
+    if (url.pathname.endsWith("/") || url.pathname.endsWith("/index.html"))
+       return new Response(Bun.file(import.meta.dir + "/index.html"));
+    
+     // all other routes
+     return new Response("Hello!");
+  }
 });
-console.log(`Listening on http://localhost:${server.port} ...`);
-console.log(process.env.YOU, process.env.FOO);
+
+// const server = Bun.serve({
+//   port: 3000,
+//   fetch(req) {
+//     return new Response(D);
+//   },
+// });
+// console.log(`Listening on http://localhost:${server.port} ...`);
+// console.log(process.env.YOU, process.env.FOO);
 
 console.log("got that shit done homie")
