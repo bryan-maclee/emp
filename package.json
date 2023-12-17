@@ -9,7 +9,8 @@
   "devDependencies": {
     "bun-types": "latest"
   },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
+  "peerDependencies": {},
+  "dependencies": {
+    "htmx.org": "^1.9.9"
   }
 }
