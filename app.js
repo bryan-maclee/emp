@@ -1,4 +1,11 @@
-console.log("hello world");
+import { Database } from "bun:sqlite";
+const db = new Database("mydb.sqlite", { create: true });
+
+const query = db.query("select 'Hello world' as message;");
+const msg = query.get();
+console.log(msg.message); // => "Hello world"
+// query.get(); // => { message: "Hello world" }
+
 var masterTimer = 0;
 const dir = import.meta.dir;
 
@@ -79,6 +86,7 @@ Bun.serve({
 import.meta.url;
 // const server = Bun.serve({
 //   port: 3000,
+
 //   fetch(req) {
 //     return new Response(D);
 //   },
