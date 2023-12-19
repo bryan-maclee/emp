@@ -70,7 +70,7 @@ Bun.serve({
     }
 
     if (url.pathname.endsWith("/popcicleStand"))
-      return new Response(Bun.file(dir + "/components/popSomeElse.html"));
+      return new Response("/components/popSomeElse.html");
     // console.log(req);
 
     // all other routes
