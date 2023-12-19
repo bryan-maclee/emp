@@ -68,6 +68,7 @@ Bun.serve({
       resp.headers.set("content-type", "text/javascript");
       return new Response(htmx);
     }
+    console.log("popcicleStand");
 
     if (url.pathname == "/popcicleStand")
     console.log("popcicleStand");
