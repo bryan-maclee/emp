@@ -63,7 +63,7 @@ Bun.serve({
     if (url.pathname.endsWith("/htmx.min.js")) {
       // console.log("htmx");
       console.log(req);
-      const htmx = Bun.file(dir + "dep/htmx.min.js");
+      const htmx = Bun.file(dir + "/dep/htmx.min.js");
       const resp = new Response(htmx);
       resp.headers.set("content-type", "text/javascript");
       return new Response(htmx);
