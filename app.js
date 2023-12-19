@@ -69,12 +69,8 @@ Bun.serve({
       return new Response(htmx);
     }
 
-    if (url.pathname.endsWith("/popcicleStand"))
-      return new Response(console.log("/components/popSomeElse.html"));
-    // console.log(req);
-
-    // all other routes
-    //  return new Response("Hello!");
+    if (url.pathname == "/popcicleStand")
+      return new Response("/components/popSomeElse.html");
   },
 });
 
