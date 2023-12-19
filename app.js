@@ -70,7 +70,7 @@ Bun.serve({
     }
 
     if (url.pathname == "/popcicleStand")
-      return new Response("/components/popSomeElse.html");
+      return new Response(JSON.stringify(popcicleStand));
   },
 });
 
