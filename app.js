@@ -62,17 +62,17 @@ Bun.serve({
       return new Response(Bun.file(dir + "/index.html"));
     if (url.pathname.endsWith("/htmx.min.js")) {
       // console.log("htmx");
-      console.log(req);
+      // console.log(req);
       const htmx = Bun.file(dir + "/dep/htmx.min.js");
       const resp = new Response(htmx);
       resp.headers.set("content-type", "text/javascript");
       return new Response(htmx);
     }
-    console.log("popcicleStand");
+    // console.log("popcicleStand");
 
     if (url.pathname == "/popcicleStand")
-    console.log("popcicleStand");
-      return new Response(JSON.stringify(popcicleStand));
+    // console.log("popcicleStand");
+      return new Response(Bun.file(dir + "/components/popSomeElse.html"));
   },
 });
 
