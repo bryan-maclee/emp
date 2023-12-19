@@ -70,6 +70,7 @@ Bun.serve({
     }
 
     if (url.pathname == "/popcicleStand")
+    console.log("popcicleStand");
       return new Response(JSON.stringify(popcicleStand));
   },
 });
