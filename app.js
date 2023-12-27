@@ -1,49 +1,34 @@
 import { Database } from "bun:sqlite";
 const db = new Database("mydb.sqlite", { create: true });
+const ndb = new Database("ducdb.sqlite", { create: true });
 
 const query = db.query("select 'Hello world' as message;");
 const msg = query.get();
 console.log(msg.message); // => "Hello world"
 // query.get(); // => { message: "Hello world" }
 
-var masterTimer = 0;
+db.run("drop table if exists users");
+db.run(
+  "create table if not exists users (id integer primary key, fname text, lname text)"
+);
+
+const insertUser = db.prepare("insert into users (fname,lname) values (?,?)");
+insertUser.run(["jon", "doe"]);
+insertUser.run(["frank", "tank"]);
+
 const dir = import.meta.dir;
 
-function biz(name, revenue, renewTime, purchaseCost) {
-  this.name = name; //name of business
-  this.revenue = revenue; //amount of money per renewTime
-  this.renewTime = renewTime; //time in milliseconds
-  this.purchaseCost = this.purchaseCost; //cost to purchase business
-  this.level = 0; //level of business
-  this.perks = []; //purchased perks of business
-}
+// function main() {
+//   businesses.forEach((business) => {
+//     if (masterTimer % business.renewTime === 0) {
+//       money += business.revenue;
+//     }
+//   });
 
-const popcicleStand = new biz("popcicleStand", 10, 5000, 100);
-const carWash = new biz("carWash", 100, 15000, 3000);
-const pizzaDelivery = new biz("pizzaDelivery", 500, 50000, 60000);
-const movieTheater = new biz("movieTheater", 2500, 100000, 240000);
-const bank = new biz("bank", 15000, 100000, 600000);
-const techCompany = new biz("techCompany", 75000, 400000, 12000000);
-const airline = new biz("airline", 250000, 10000000, 600000000);
-const oilCompany = new biz("oilCompany", 1250000, 3000000, 600000000);
-
-const businesses = [];
-
-function addBusiness(business) {
-  businesses.push(business);
-}
-
-function main() {
-  businesses.forEach((business) => {
-    if (masterTimer % business.renewTime === 0) {
-      money += business.revenue;
-    }
-  });
-
-  masterTimer++;
-  setTimeout(main, 10);
-}
-process.env.YOO = "you";
+//   masterTimer++;
+//   setTimeout(main, 10);
+// }
+// process.env.YOO = "you";
 // let D = new URL("index.html");
 
 function loadDoc() {
@@ -78,20 +63,12 @@ Bun.serve({
     // console.log("popcicleStand");
 
     if (url.pathname == "/popcicleStand")
-    // console.log("popcicleStand");
+      // console.log("popcicleStand");
       return new Response(Bun.file(dir + "/components/popSomeElse.html"));
   },
 });
 
-import.meta.url;
-// const server = Bun.serve({
-//   port: 3000,
-
-//   fetch(req) {
-//     return new Response(D);
-//   },
-// });
-// console.log(`Listening on http://localhost:${server.port} ...`);
+// import.meta.url;
 // console.log(process.env.YOU, process.env.FOO);
 
 console.log("got that shit done homie");
